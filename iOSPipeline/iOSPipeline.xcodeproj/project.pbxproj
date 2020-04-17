@@ -15,7 +15,6 @@
 		334FDA942449E6640091AA2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334FDA922449E6640091AA2F /* LaunchScreen.storyboard */; };
 		334FDA9F2449E6640091AA2F /* iOSPipelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334FDA9E2449E6640091AA2F /* iOSPipelineTests.swift */; };
 		334FDAAA2449E6640091AA2F /* iOSPipelineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334FDAA92449E6640091AA2F /* iOSPipelineUITests.swift */; };
-		334FDAB82449E94B0091AA2F /* Jenkinsfile.txt in Resources */ = {isa = PBXBuildFile; fileRef = 334FDAB72449E94B0091AA2F /* Jenkinsfile.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +49,6 @@
 		334FDAA52449E6640091AA2F /* iOSPipelineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSPipelineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		334FDAA92449E6640091AA2F /* iOSPipelineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSPipelineUITests.swift; sourceTree = "<group>"; };
 		334FDAAB2449E6640091AA2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		334FDAB72449E94B0091AA2F /* Jenkinsfile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Jenkinsfile.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +99,6 @@
 		334FDA862449E65C0091AA2F /* iOSPipeline */ = {
 			isa = PBXGroup;
 			children = (
-				334FDAB72449E94B0091AA2F /* Jenkinsfile.txt */,
 				334FDA872449E65C0091AA2F /* AppDelegate.swift */,
 				334FDA892449E65C0091AA2F /* SceneDelegate.swift */,
 				334FDA8B2449E65C0091AA2F /* ViewController.swift */,
@@ -238,7 +235,6 @@
 				334FDA942449E6640091AA2F /* LaunchScreen.storyboard in Resources */,
 				334FDA912449E6640091AA2F /* Assets.xcassets in Resources */,
 				334FDA8F2449E65C0091AA2F /* Main.storyboard in Resources */,
-				334FDAB82449E94B0091AA2F /* Jenkinsfile.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
