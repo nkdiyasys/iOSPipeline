@@ -53,13 +53,15 @@ pipeline {
 					echo 'commented input'
 					}	
 				}
- 			stage('Build and Test'){
+ 			stage('Email'){
 				steps { 
-     			    //   parallel iOS_13_3_Simulator: {
-        		      //  buildAndTest 'iOS Simulator', env.IOS133SIMULATOR
-       				// }, failFast: false
-emailext body: 'noting', recipientProviders: [developers()], subject: 'sub', to: 'nkdiyasys@gmail.com'
+						emailext body: 'noting', recipientProviders: [developers()], 	subject: 'sub', to: 'nkdiyasys@gmail.com'
   			    }
+			}
+			stage('Junit') {
+				steps {
+junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
+				}
 			}
 			}
 		}
