@@ -1,4 +1,3 @@
-//@Library('shared') _
 
 def xcodeproj = 'iOSPipeline.xcodeproj' // Path to the xcodeproj
 def xcarchive_name = "iOSPipeline.xcarchive" // Name of the archive to build
@@ -33,11 +32,11 @@ pipeline {
 				}
 			}
 
-			stage('Test') {
+			stage('Build') {
 				steps {
 			//testcompletetest suite: 'Projects\iOSPipeline.pjs'
 			xcodeBuild appURL: '', assetPackManifestURL: '', 
-			buildDir: 'build',
+			buildDir: '',
 			 buildIpa: true, bundleID: '',
  			bundleIDInfoPlistPath: '', 
 			cfBundleShortVersionStringValue: '', 
