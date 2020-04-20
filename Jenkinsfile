@@ -37,7 +37,7 @@ pipeline {
 				steps {
 			//testcompletetest suite: 'Projects\iOSPipeline.pjs'
 			xcodeBuild appURL: '', assetPackManifestURL: '', 
-buildDir: '${WORKSPACE}/build',
+buildDir: 'build',
  buildIpa: true, bundleID: '',
  bundleIDInfoPlistPath: '', 
 cfBundleShortVersionStringValue: '', 
