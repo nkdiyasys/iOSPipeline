@@ -1,4 +1,4 @@
-@Library('general-pipeline') _
+@Library('github.com/mozmeao/jenkins-pipeline@master')
 
 def xcodeproj = 'iOSPipeline.xcodeproj' // Path to the xcodeproj
 def xcarchive_name = "iOSPipeline.xcarchive" // Name of the archive to build
