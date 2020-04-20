@@ -16,5 +16,15 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func tapMeClicked(_ sender: Any) {
+    let alert = UIAlertController.init(title: "Test", message: "Test alert", preferredStyle: .alert)
+
+          alert.addAction(UIAlertAction.init(title: "Done", style: .default, handler: { (action) in
+              alert.dismiss(animated: true, completion: nil)
+          }))
+
+          self.present(alert, animated: true, completion: nil)
+      
+    }
 }
 

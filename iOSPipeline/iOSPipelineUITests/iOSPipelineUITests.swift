@@ -27,7 +27,9 @@ class iOSPipelineUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
+        
+        app.buttons["Tap Me"].tap()
+        app.alerts["Test"].buttons["Done"].tap()
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

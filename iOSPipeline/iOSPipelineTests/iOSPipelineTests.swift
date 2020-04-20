@@ -19,10 +19,22 @@ class iOSPipelineTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+     func testIncrement() {
+           let counter = Counter()
+
+           counter.increment()
+
+           XCTAssertEqual(counter.count, 1)
+       }
+
+       func testIncrementBy() {
+           let counter = Counter()
+
+           counter.increment(by: 10)
+
+           XCTAssertEqual(counter.count, 10)
+       }
+       
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
