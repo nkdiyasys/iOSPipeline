@@ -12,8 +12,8 @@ def simulator_device = 'iPhone 7' // Name of the device type to use for tests
 // 3. If you want Slack notifications, return true in the functions below and set the Slack channel
 def slackChannel = '#general'
 
-@Library('https://github.com/mozmeao/jenkins-pipeline.git')
-//added
+@Library('general-pipeline') _
+
 def sendStartNotification() {
     // Send a Slack notification when the build starts?
     false
