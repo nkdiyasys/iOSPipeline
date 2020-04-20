@@ -49,7 +49,8 @@ pipeline {
 				}
 			stage('two') {
 				steps {
-					input('Do you want to proceed?')
+					//input('Do you want to proceed?')
+					echo 'commented input'
 					}	
 				}
  			stage('Build and Test'){
@@ -57,7 +58,7 @@ pipeline {
      			    //   parallel iOS_13_3_Simulator: {
         		      //  buildAndTest 'iOS Simulator', env.IOS133SIMULATOR
        				// }, failFast: false
-build job: 'iOSPipeline', quietPeriod: 10
+emailext body: 'noting', recipientProviders: [developers()], subject: 'sub', to: 'nkdiyasys@gmail.com'
   			    }
 			}
 			}
