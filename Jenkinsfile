@@ -48,7 +48,7 @@ properties([buildDiscarder(logRotator(artifactNumToKeepStr: '50', numToKeepStr: 
 node {
     def startTime = System.currentTimeMillis()
     def buildURL = "https://example.com/builds/ios"
-    def branchNameForURL = env.BRANCH_NAME.replaceAll("/", "-")
+    def branchNameForURL = env.BRANCH_NAME
 
     try {
         stage('Check project') {
