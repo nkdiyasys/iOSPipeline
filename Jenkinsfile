@@ -54,9 +54,10 @@ pipeline {
 				}
  			stage('Build and Test'){
 				steps { 
-     			       parallel iOS_13_3_Simulator: {
-        		        buildAndTest 'iOS Simulator', env.IOS133SIMULATOR
-       				 }, failFast: false
+     			    //   parallel iOS_13_3_Simulator: {
+        		      //  buildAndTest 'iOS Simulator', env.IOS133SIMULATOR
+       				// }, failFast: false
+build job: 'iOSPipeline', quietPeriod: 10
   			    }
 			}
 			}
