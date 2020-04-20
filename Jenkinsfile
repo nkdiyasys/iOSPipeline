@@ -1,30 +1,3 @@
-pipeline {
-    agent any
-    stages {
-        stage('one') {
-            steps {
-                parallel("first": {
-                    echo "hello"
-                },
-                        "second": {
-                            echo "world"
-                        }
-                )
-            }
-        }
-        stage('two') {
-            steps {
-                parallel("first": {
-                    echo "hello"
-                },
-                        "second": {
-                            echo "world"
-                        }
-                )
-            }
-        }
-    }
-}
 @Library('github.com/mozmeao/jenkins-pipeline@master.git')
 
 def xcodeproj = 'iOSPipeline.xcodeproj' // Path to the xcodeproj
