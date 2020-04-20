@@ -20,10 +20,12 @@ pipeline {
 					input('Do you want to proceed?')
 					}	
 				}
- stage('Build and Test'){
-            parallel iOS_9_3_Simulator: {
-                buildAndTest 'iOS Simulator', env.IOS93SIMULATOR
-        }, failFast: false
-      }
+ 			stage('Build and Test'){
+				steps { 
+     			       parallel iOS_9_3_Simulator: {
+        		        buildAndTest 'iOS Simulator', env.IOS93SIMULATOR
+       				 }, failFast: false
+  			    }
+			}
 			}
 		}
