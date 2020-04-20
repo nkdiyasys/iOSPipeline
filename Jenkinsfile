@@ -54,8 +54,8 @@ pipeline {
 				}
  			stage('Build and Test'){
 				steps { 
-     			       parallel iOS_9_3_Simulator: {
-        		        buildAndTest 'iOS Simulator', env.IOS93SIMULATOR
+     			       parallel iOS_13_3_Simulator: {
+        		        buildAndTest 'iOS Simulator', env.IOS133SIMULATOR
        				 }, failFast: false
   			    }
 			}
