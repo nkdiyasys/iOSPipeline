@@ -35,7 +35,11 @@ pipeline {
 
 			stage('Test') {
 				steps {
-			testcompletetest suite: 'Projects\iOSPipeline.pjs'
+			//testcompletetest suite: 'Projects\iOSPipeline.pjs'
+xcodebuild -project iOSPipeline/iOSPipeline.xcodeproj \
+-scheme iOSPipeline \
+-destination 'platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max' \
+-enableCodeCoverage YES \test | /usr/local/bin/ocunit2junit
 				}
 			}
 			}
