@@ -67,97 +67,9 @@ node {
             sh "mkdir -p build"
         }
 
-        stage('Build') {
-            wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
-                // Just build for the example project
-                // We can't archive because there's no code signing set up
-                // Set up a development team and code signing to archive an ipa
-                sh "xcrun xcodebuild -scheme '${build_scheme}' -destination 'name=iPhone 7' clean build | tee build/xcodebuild.log | xcpretty"
+            
 
-                // Uncomment this when building a project with code signing set up
-                /*sh "xcrun xcodebuild -scheme '${build_scheme}' archive -archivePath 'build/${xcarchive_name}' | tee build/xcodebuild.log | xcpretty"
-                sh "xcrun xcodebuild -exportArchive -exportOptionsPlist exportOptions.plist -archivePath 'build/${xcarchive_name}' -exportPath build"
-
-                dir('build') {
-                    sh "zip -qr 'Jenkins-iOS-Example-${env.BUILD_NUMBER}.zip' '${xcarchive_name}'"
-                    sh "mv 'iOSPipeline.ipa' 'iOSPipeline-${branchNameForURL}.ipa'"
-                }*/
-            }
-        }
-
-        stage('Test') {
-            wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
-
-                if (sh(script: "which bluepill || true", returnStdout: true).trim().length() > 0) {
-                    // bluepill is installed
-                    // Perform incremental builds to speed up builds a bit (use clean build-for-testing if you need a clean build every time)
-                    sh "xcodebuild -scheme '${test_scheme}' -enableCodeCoverage YES -configuration Debug -destination 'name=${simulator_device}' build-for-testing | tee build/xcodebuild-test.log | xcpretty"
-
-                    // Determine the location of the apps
-                    app_path = sh(script: "xcodebuild -scheme '${test_scheme}' -configuration Debug -sdk iphonesimulator -destination 'name=${simulator_device}' build -showBuildSettings CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO 2>/dev/null | grep CODESIGNING_FOLDER_PATH | awk -F' = ' '{ gsub(\"Build/Products\", \"Build/Intermediates/CodeCoverage/Products\", \$2); print \$2 }'", returnStdout: true).trim()
-
-                    // Determine the location of CodeCoverage for each app so we can manually generate Coverage.profdata after the tests run
-                    coverage_path = sh(script: "dirname \$(dirname \$(dirname '${app_path}'))", returnStdout: true).trim()
-
-                    // Execute bluepill in parallel to test multiple schemes at once
-                    parallel (
-                        "Unit Tests": {
-                            sh "bluepill -a '${app_path}' -s '${xcodeproj}/xcshareddata/xcschemes/iOSPipelineTests.xcscheme' -o build/reports-tests -S 180 -T 450 -n 1 || true"
-                        },
-                        "UI Tests": {
-                            sh "bluepill -a '${app_path}' -s '${xcodeproj}/xcshareddata/xcschemes/iOSPipelineUITests.xcscheme' -o build/reports-uitests -S 180 -T 450 -n 1 || true"
-                        }
-                    )
-
-                    // Copy JUnit output into place
-                    sh "mkdir -p build/reports"
-                    sh "cp build/reports-tests/TEST-FinalReport.xml build/reports/tests.xml"
-                    sh "cp build/reports-uitests/TEST-FinalReport.xml build/reports/uitests.xml"
-
-                    // Generate coverage
-                    // Manually merge profraw into a single profdata file and put it where CodeCoverage.profdata normally goes
-                    sh "xcrun llvm-profdata merge -sparse build/reports-tests/**/*.profraw build/reports-uitests/**/*.profraw -o '${coverage_path}/Coverage.profdata'"
-                    sh "slather coverage --scheme '${test_scheme}' --cobertura-xml --output-directory build/coverage '${xcodeproj}'"
-                } else {
-                    // bluepill isn't installed, use xcodebuild to perform tests
-
-                    // Quit the iOS Simulator and reset all simulators so we're always starting with a clean slate
-                    sh "killall 'Simulator' 2&> /dev/null || true"
-                    sh "xcrun simctl erase all"
-
-                    // Run tests and generate coverage
-                    sh "xcodebuild -scheme '${test_scheme}' -enableCodeCoverage YES -configuration Debug -destination 'name=${simulator_device}' test | tee build/xcodebuild-test.log | xcpretty -r junit --output build/reports/junit.xml"
-                    sh "slather coverage --scheme '${test_scheme}' --cobertura-xml --output-directory build/coverage '${xcodeproj}'"
-
-                    // If you have multiple schemes you can run them sequentially here
-                    // For example, you might have a separate iPad app
-                    //sh "mv build/coverage/cobertura.xml build/coverage/iphone.xml"
-                    //sh "xcodebuild -scheme 'iOSPipeline iPad' -enableCodeCoverage YES -configuration Debug -destination 'name=iPad Air 2' test | tee build/xcodebuild-ipad-test.log | xcpretty -r junit --output build/reports/junit-ipad.xml"
-                    //sh "slather coverage --scheme 'iOSPipeline iPad' --cobertura-xml --output-directory build/coverage '${xcodeproj}'"
-                    //sh "mv build/coverage/cobertura.xml build/coverage/ipad.xml"
-                }
-            }
-
-            step([$class: 'JUnitResultArchiver', testResults: 'build/reports/*.xml'])
-            step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: 'build/coverage/*.xml', failNoReports: true, failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'UTF_8', zoomCoverageChart: true])
-        }
-
-        stage('Save') {
-            dir('build') {
-                // Uncomment this when 
-                // archiveArtifacts artifacts: '*.ipa', fingerprint: true
-
-                // You can archive other files as well
-                // For example, you might have images of build failures from UI tests or KIF
-                // archiveArtifacts artifacts: '*.ipa, UITests/*.png, KIF/*.png', fingerprint: true
-
-                // Uncomment below if you want to upload the resulting ipa somewhere
-                // You need to add an SSH key in the Credentials section of Jenkins
-                /*sshagent(['build-results-server']) {
-                    sh 'scp *.ipa jenkins@example.com:~/builds/ios'
-                }*/
-            }
-
+ 
             def endTime = System.currentTimeMillis()
             def durationString = createDurationString(startTime, endTime)
             def testResults = getTestResult()
