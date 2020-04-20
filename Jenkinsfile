@@ -34,6 +34,20 @@ def test_scheme = 'iOSPipeline' // Scheme to build tests
 def simulator_device = 'iPhone 7' // Name of the device type to use for tests
 
 
+def clone(udid) {
+    checkout changelog: true, poll: true, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "$udid/ios-mobile-engage-sample-app"]], submoduleCfg: [], userRemoteConfigs: [[url: 'git@github.com:emartech/ios-mobile-engage-sample-app.git']]]
+}
+
+def podi(udid) {
+  lock("pod") {
+    sh "cd $udid/ios-mobile-engage-sample-app && pod repo update && pod update"
+  }
+}
+
+def uninstallSample(ecid) {
+    sh "${env.CFG_UTIL}cfgutil --ecid $ecid remove-app com.emarsys.mobile-engage-sample-app || true"
+}
+
 def buildAndTest(platform, udid) {
   lock(udid) {
     def uuid = UUID.randomUUID().toString()
