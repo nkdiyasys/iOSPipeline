@@ -87,7 +87,7 @@ node {
 
                 slackSend channel: slackChannel, color: color, message: message
             }
-        }
+     
     } catch (e) {
         def endTime = System.currentTimeMillis()
         def durationString = createDurationString(startTime, endTime)
