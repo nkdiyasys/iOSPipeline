@@ -4,6 +4,7 @@ def build_scheme = 'iOSPipeline' // Scheme to build the app
 def test_scheme = 'iOSPipeline' // Scheme to build tests
 def simulator_device = 'iPhone 7' // Name of the device type to use for tests
 
+
 pipeline {
 	agent any
  		stages {
@@ -17,19 +18,10 @@ pipeline {
 					input('Do you want to proceed?')
 					}	
 				}
- 			stage('Check project') {
-    			        if (sendStartNotification()) {
-       			         slackSend channel: slackChannel, color: 	colorForBuildResult(currentBuild.getPreviousBuild()), message: slackMessagePrefix() + " 				Started (<${env.BUILD_URL}|Open>)"
-    					        }
-
-     		       checkout scm
-            
-         	   // Delete and recreate build directory
-         	   dir('build') {
-          	      deleteDir()
-          	  }
-
-         	   sh "mkdir -p build"
-      			  }
+ stage('Build and Test'){
+            parallel iOS_9_3_Simulator: {
+                buildAndTest 'iOS Simulator', env.IOS93SIMULATOR
+        }, failFast: false
+      }
 			}
 		}
