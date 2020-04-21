@@ -35,6 +35,8 @@ xcodeBuild(
 }
 			 stage('archive') {
             			steps {
+					echo 'Bye, Nk.'
+
 				}
 				}
 		}
