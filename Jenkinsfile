@@ -18,6 +18,7 @@ pipeline {
             			steps {
 //  /usr/local/bin/ocunit2junit
 xcodeBuild(
+			xcodeProjectPath: 'iOSPipeline', 
   xcodeSchema: "iOSPipeline",
   ipaOutputDirectory: 'Debug',
   ipaExportMethod: 'development',
