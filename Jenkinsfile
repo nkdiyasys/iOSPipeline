@@ -34,7 +34,7 @@ pipeline {
 	stage('Build') {
 				steps {
 			xcodeBuild appURL: '', assetPackManifestURL: '', 
-			buildDir: '',
+			buildDir: 'build',
 			 buildIpa: true,
 			 bundleID: '',
  			bundleIDInfoPlistPath: '', 
