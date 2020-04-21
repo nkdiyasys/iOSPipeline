@@ -16,6 +16,7 @@
 		334FDA942449E6640091AA2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334FDA922449E6640091AA2F /* LaunchScreen.storyboard */; };
 		334FDA9F2449E6640091AA2F /* iOSPipelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334FDA9E2449E6640091AA2F /* iOSPipelineTests.swift */; };
 		334FDAAA2449E6640091AA2F /* iOSPipelineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334FDAA92449E6640091AA2F /* iOSPipelineUITests.swift */; };
+		339223D1244EECCC000FE806 /* sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 339223D0244EECCC000FE806 /* sample.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		334FDAA52449E6640091AA2F /* iOSPipelineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSPipelineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		334FDAA92449E6640091AA2F /* iOSPipelineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSPipelineUITests.swift; sourceTree = "<group>"; };
 		334FDAAB2449E6640091AA2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		339223D0244EECCC000FE806 /* sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sample.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		334FDA862449E65C0091AA2F /* iOSPipeline */ = {
 			isa = PBXGroup;
 			children = (
+				339223D0244EECCC000FE806 /* sample.pdf */,
 				334FDA872449E65C0091AA2F /* AppDelegate.swift */,
 				334FDA892449E65C0091AA2F /* SceneDelegate.swift */,
 				33249DEB244D7B94002716A2 /* Counter.swift */,
@@ -235,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				339223D1244EECCC000FE806 /* sample.pdf in Resources */,
 				334FDA942449E6640091AA2F /* LaunchScreen.storyboard in Resources */,
 				334FDA912449E6640091AA2F /* Assets.xcassets in Resources */,
 				334FDA8F2449E65C0091AA2F /* Main.storyboard in Resources */,
