@@ -40,7 +40,7 @@ pipeline {
 				assetPackManifestURL: '', 
 				compileBitcode: false,
  				developmentTeamID: '', 
-				developmentTeamName: '', 
+				developmentTeamName: 'Tregaron India Holdings, LLC', 
 				displayImageURL: '', 
 				fullSizeImageURL: '',
  				ipaExportMethod: 'development', 
