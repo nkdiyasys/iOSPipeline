@@ -16,7 +16,7 @@ pipeline {
 				}
  stage('xcarchive') {
             			steps {
-xcodebuild build -project iOSPipeline.xcworkspace -scheme TY-Prod | xcpretty
+xcodebuild build -project iOSPipeline.xcworkspace -scheme iOSPipeline | xcpretty
 }
 }
 			 stage('archive') {
