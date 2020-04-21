@@ -7,14 +7,29 @@
 //
 
 import UIKit
+import PDFKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var pdfView: PDFView!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-    }
+        pdfViewFunc()
 
+    }
+    func pdfViewFunc() {
+           
+           
+           guard let path = Bundle.main.url(forResource: "sample", withExtension: "pdf") else { return }
+
+           if let document = PDFDocument(url: path) {
+               pdfView.document = document
+           }
+           
+       }
 
     @IBAction func tapMeClicked(_ sender: Any) {
     let alert = UIAlertController.init(title: "Test", message: "Test alert", preferredStyle: .alert)
