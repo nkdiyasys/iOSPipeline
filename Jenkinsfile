@@ -43,7 +43,6 @@ pipeline {
 			cfBundleShortVersionStringValue: '', 
 			cfBundleVersionValue: '',
 			cleanBeforeBuild: true,
-			cleanBeforeBuild: false, 
 			cleanResultBundlePath: false, 
 			configuration: 'Debug', developmentTeamID: '',
  			developmentTeamName: 'Tregaron India Holdings, LLC', 
@@ -69,6 +68,6 @@ pipeline {
 			xcodeWorkspaceFile: '', 
 			xcodebuildArguments: 'test -destination \'platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max\''
 				}
-			}
-			}
 		}
+			}
+	}
