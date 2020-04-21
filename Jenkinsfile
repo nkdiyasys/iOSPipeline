@@ -70,7 +70,6 @@ pipeline {
 		}
 		stage('Export') {
 			steps {
-				export PATH=$PATH:/Applications/Xcode.app/Contents/Applications/Application\ Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/
 altool --upload-app -f /Users/jenkins/Documents/workspace/ios-distribution-config/TY-Prod.ipa -u your_user_name -p your_password
 		
 	}
