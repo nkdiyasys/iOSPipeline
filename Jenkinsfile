@@ -34,7 +34,7 @@ pipeline {
 	stage('Build') {
 				steps {
 			xcodeBuild appURL: '', assetPackManifestURL: '', 
-			buildDir: 'build',
+			buildDir: '',
 			 buildIpa: true,
 			 bundleID: '',
  			bundleIDInfoPlistPath: '', 
@@ -68,10 +68,11 @@ pipeline {
 			xcodebuildArguments: 'test -destination \'platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max\''
 				}
 		}
-		stage('Artifacts') {
+		stage('Export') {
 			steps {
-				archiveArtifacts 'build/*.ipa'
-			}
+echo 'Pending'
+		
+	}
 		}
 		}
 	}
