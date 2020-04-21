@@ -25,7 +25,13 @@ pipeline {
 						emailext attachLog: true,body: 'noting', recipientProviders: [developers()], 	subject: 'sub', to: 'nkdiyasys@gmail.com'
   			    }
 			}
-			stage('Build') {
+			stage('Junit') {
+				steps {
+  					sh 'ln -s tests/test-results-unit.xml $WORKSPACE'
+					junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
+				}
+			}
+	stage('Build') {
 				steps {
 			xcodeBuild appURL: '', assetPackManifestURL: '', 
 			buildDir: '',
@@ -62,13 +68,6 @@ pipeline {
 			xcodebuildArguments: 'test -destination \'platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max\''
 				}
 		}
-stage('Junit') {
-				steps {
-  					sh 'ln -s tests/test-results-unit.xml $WORKSPACE'
-					junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
-				}
-			}
-
 		stage('Export') {
 			steps {
 echo 'Pending'
