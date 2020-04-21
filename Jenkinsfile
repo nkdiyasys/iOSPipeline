@@ -6,8 +6,9 @@ def test_scheme = 'iOSPipeline' // Scheme to build tests
 def simulator_device = 'iPhone 7' // Name of the device type to use for tests
 
 
-node('iOS Node') {
-
+pipeline {
+	agent any
+ 		stages {
     stage('Checkout/Build/Test') {
 
         // Checkout files.
@@ -53,4 +54,5 @@ node('iOS Node') {
         // Send slack notification
         slackSend channel: '#my-team', message: 'Time Table - Successfully', teamDomain: 'my-team', token: 'my-token'
     }
+}
 }
