@@ -36,14 +36,13 @@ pipeline {
 	stage('Export') {
 			steps {
 				exportIpa appURL: '', 
-				archiveDir: 'ipa', 
+				archiveDir: 'spa', 
 				assetPackManifestURL: '', 
 				compileBitcode: false,
  				developmentTeamID: '', 
 				developmentTeamName: '', 
 				displayImageURL: '', 
 				fullSizeImageURL: '',
-				configuration: 'Debug',
  				ipaExportMethod: 'development', 
 				ipaName: '${VERSION}_${BUILD_DATE}',
  				ipaOutputDirectory: 'Build', 
