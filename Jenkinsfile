@@ -14,29 +14,24 @@ pipeline {
 					echo 'Hi, Nk. How are you'
 					}	
 				}
-			stage('Checkout/Build/Test') {
-				steps {
+			 stage('Test') {
+            steps {
+                sh 'make test'
 
-        // Checkout files.
-        checkout([
-            $class: 'GitSCM',
-            branches: [[name: 'master']],
-            doGenerateSubmoduleConfigurations: false,
-            extensions: [], submoduleCfg: [],
-            userRemoteConfigs: [[
-                name: 'github',
-                url: 'https://github.com/nkdiyasys/iOSPipeline.git'
-            ]]
-        ])
-
-        // Build and Test
-        sh 'xcodebuild -project iOSPipeline/iOSPipeline.xcworkspace -schema iOSPipeline -configuration "Debug" build test -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=13.3" -enableCodeCoverage YES | /usr/local/bin/xcpretty -r junit'
-
-        // Publish test restults.
-        step([$class: 'JUnitResultArchiver', allowEmptyResults: true, testResults: 'build/reports/junit.xml'])
+                script {
+                    def testResults = findFiles(glob: 'build/reports/**/*.xml')
+                    for(xml in testResults) {
+                        touch xml.getPath()
+                    }
+                }
+            }
+        }
     }
 
-					}	
- 
-		}
+    post {
+        always {
+            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+            junit 'build/reports/**/*.xml'
+        }
+    }		}
 	}
