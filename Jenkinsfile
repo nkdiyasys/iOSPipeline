@@ -27,7 +27,7 @@ pipeline {
 			}
 			stage('Junit') {
 				steps {
-  					sh 'ln -s tests/test-results-unit.xml $WORKSPACE'
+  					//sh 'ln -s tests/test-results-unit.xml $WORKSPACE'
 					junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
 				}
 			}
@@ -44,7 +44,7 @@ pipeline {
 				fullSizeImageURL: '',
  				ipaExportMethod: 'development', 
 				ipaName: '${VERSION}_${BUILD_DATE}',
- 				ipaOutputDirectory: '${WORKSPACE}/builds', 
+ 				ipaOutputDirectory: '', 
 				keychainName: '', 
 				keychainPath:  '${HOME}/Library/Keychains/login.keychain',
  			keychainPwd: hudson.util.Secret.fromString(''),
