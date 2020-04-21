@@ -30,7 +30,7 @@ pipeline {
         ])
 
         // Build and Test
-        sh 'xcodebuild -project iOSPipeline.xcworkspace -schema iOSPipeline -configuration "Debug" build test -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=13.3" -enableCodeCoverage YES | /usr/local/bin/xcpretty -r junit'
+        sh 'xcodebuild -project iOSPipeline/iOSPipeline.xcworkspace -schema iOSPipeline -configuration "Debug" build test -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=13.3" -enableCodeCoverage YES | /usr/local/bin/xcpretty -r junit'
 
         // Publish test restults.
         step([$class: 'JUnitResultArchiver', allowEmptyResults: true, testResults: 'build/reports/junit.xml'])
