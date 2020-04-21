@@ -19,10 +19,8 @@ pipeline {
                 sh 'make test'
 
                 script {
-                    def testResults = findFiles(glob: 'build/reports/**/*.xml')
-                    for(xml in testResults) {
-                        touch xml.getPath()
-                    }
+                   mvn clean test
+
                 }
             }
         }
