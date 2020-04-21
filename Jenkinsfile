@@ -36,7 +36,7 @@ pipeline {
 	stage('Export') {
 			steps {
 				exportIpa appURL: '', 
-				archiveDir: 'spa', 
+				archiveDir: '', 
 				assetPackManifestURL: '', 
 				compileBitcode: false,
  				developmentTeamID: '', 
