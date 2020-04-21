@@ -70,9 +70,32 @@ pipeline {
 		}
 		stage('Export') {
 			steps {
-echo 'Pending'
-		
-	}
-		}
+				exportIpa appURL: '', 
+				archiveDir: '', 
+				assetPackManifestURL: '', 
+				compileBitcode: false,
+ 				developmentTeamID: '', 
+				developmentTeamName: 'Tregaron India Holdings, LLC', 
+				displayImageURL: '', 
+				fullSizeImageURL: '',
+ 				ipaExportMethod: 'development', 
+				ipaName: '${VERSION}_${BUILD_DATE}',
+ 				ipaOutputDirectory: '${WORKSPACE}/builds', 
+				keychainName: '', 
+				keychainPath:  '${HOME}/Library/Keychains/login.keychain',
+ 			keychainPwd: hudson.util.Secret.fromString(''),
+ 				packResourcesAsset: true, 
+				provisioningProfiles: [[provisioningProfileAppId: 'com.lockdown.app', 				provisioningProfileUUID: '4e3f3e97-d9d0-465e-9340-de6a3e0acc30']], 
+				resourcesAssetURL: '', 
+				signingMethod: 'manual', 
+				thinning: '', 
+				unlockKeychain: false, 
+				uploadBitcode: false, 
+				uploadSymbols: false, 
+				xcodeProjectPath: 'iOSPipeline',
+ 				xcodeSchema: 'iOSPipeline', 
+				xcodeWorkspaceFile: ''
+				}
+			}
 		}
 	}
