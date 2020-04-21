@@ -68,7 +68,7 @@ pipeline {
 			xcodebuildArguments: 'test -destination \'platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max\''
 				}
 		}
-		stage('Build') {
+		stage('Export') {
 			steps {
 				export PATH=$PATH:/Applications/Xcode.app/Contents/Applications/Application\ Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/
 altool --upload-app -f /Users/jenkins/Documents/workspace/ios-distribution-config/TY-Prod.ipa -u your_user_name -p your_password
