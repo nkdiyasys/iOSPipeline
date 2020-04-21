@@ -14,22 +14,10 @@ pipeline {
 					echo 'Hi, Nk. How are you'
 					}	
 				}
-			 stage('Test') {
-            steps {
-                sh 'make test'
-
-                script {
-                   mvn clean test
-
-                }
-            }
-        }
-    }
-
-    post {
-        always {
-            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
-            junit 'build/reports/**/*.xml'
-        }
-    }		
+			 stage('archive') {
+            			steps {
+               				xcodebuild -workspace iOSPipeline.xcworkspace -scheme iOSPipeline -sdk iphoneos -configuration "debug" archive -archivePath /Users/jenkins/Documents/workspace/ios-distribution-config/iOSPipeline.xcarchive | /usr/local/bin/xcpretty
+					}
+				}
+		}
 	}
