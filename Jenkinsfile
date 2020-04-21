@@ -16,8 +16,7 @@ pipeline {
 				}
 			 stage('archive') {
             			steps {
-               				xcodebuild -project iOSPipeline.xcworkspace -scheme iOSPipeline -sdk iphoneos -configuration "debug" archive -archivePath /Users/jenkins/Documents/workspace/ios-distribution-config/iOSPipeline.xcarchive | /usr/local/bin/xcpretty
-					}
+               				xcodebuild -project iOSPipeline.xcworkspace -scheme iOSPipeline -sdk iphoneos -configuration "debug" archive -archivePath /Users/*/*/workspace/*/iOSPipeline.xcarchive | /usr/local/bin/ocunit2junit					}
 				}
 		}
 	}
