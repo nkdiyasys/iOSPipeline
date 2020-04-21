@@ -27,7 +27,7 @@ pipeline {
 			}
 			stage('Junit') {
 				steps {
-  					//sh 'ln -s tests/test-results-unit.xml $WORKSPACE'
+  					sh 'ln -s tests/test-results-unit.xml $WORKSPACE'
 					junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
 				}
 			}
@@ -57,7 +57,7 @@ pipeline {
 				uploadBitcode: false, 
 				uploadSymbols: false, 
 				xcodeProjectPath: 'iOSPipeline',
- 				xcodeSchema: 'iOSPipeline', 
+ 				xcodeSchema: 'Debug', 
 				xcodeWorkspaceFile: ''
 				}
 			}
