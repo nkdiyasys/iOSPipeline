@@ -14,9 +14,8 @@ pipeline {
 					echo 'Hi, Nk. How are you'
 					}	
 				}
-			stage('two') {
+			stage('Checkout/Build/Test') {
 				steps {
-					  stage('Checkout/Build/Test') {
 
         // Checkout files.
         checkout([
