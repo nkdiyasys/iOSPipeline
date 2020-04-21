@@ -9,7 +9,14 @@ def simulator_device = 'iPhone 7' // Name of the device type to use for tests
 pipeline {
 	agent any
  		stages {
-    stage('Checkout/Build/Test') {
+			stage('one') {
+				steps {
+					echo 'Hi, Nk. How are you'
+					}	
+				}
+			stage('two') {
+				steps {
+					  stage('Checkout/Build/Test') {
 
         // Checkout files.
         checkout([
@@ -30,26 +37,8 @@ pipeline {
         step([$class: 'JUnitResultArchiver', allowEmptyResults: true, testResults: 'build/reports/junit.xml'])
     }
 
-    stage('Analytics') {
-        
-        parallel Coverage: {
-            // Generate Code Coverage report
-            sh '/usr/local/bin/slather coverage --jenkins --html --scheme iOSPipeline iOSPipeline.xcodeproj/'
-    
-            // Publish coverage results
-            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'html', reportFiles: 'index.html', reportName: 'Coverage Report'])
-        
-            
-        }, Checkstyle: {
-
-            // Generate Checkstyle report
-            sh '/usr/local/bin/swiftlint lint --reporter checkstyle > checkstyle.xml || true'
-    
-            // Publish checkstyle result
-            step([$class: 'CheckStylePublisher', canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'checkstyle.xml', unHealthy: ''])
-        }, failFast: true|false   
-    }
-
+					}	
+				}
  
-}
-}
+		}
+	}
