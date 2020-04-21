@@ -16,13 +16,26 @@ pipeline {
 				}
  stage('xcarchive') {
             			steps {
-xcodebuild build -project iOSPipeline.xcworkspace -scheme iOSPipeline | /usr/local/bin/ocunit2junit
+//  /usr/local/bin/ocunit2junit
+xcodeBuild(
+  xcodeSchema: "iOSPipeline",
+  ipaOutputDirectory: 'Debug',
+  ipaExportMethod: 'development',
+  generateArchive: true,
+  buildIpa: true,
+  ipaName: "123",
+  bundleID: 'com.lockdown.app',
+  developmentTeamName: "Tregaron India Holdings, LLC",
+  cleanBeforeBuild: true,
+  configuration: 'Debug',
+  cfBundleShortVersionStringValue: '1.0.0',
+  cfBundleVersionValue: '1'
+)
 }
 }
 			 stage('archive') {
             			steps {
-
-               				xcodebuild -project iOSPipeline.xcworkspace -scheme iOSPipeline -sdk iphoneos -configuration "debug" archive -archivePath /Users/*/*/workspace/*/iOSPipeline.xcarchive | /usr/local/bin/ocunit2junit					}
+				}
 				}
 		}
 	}
