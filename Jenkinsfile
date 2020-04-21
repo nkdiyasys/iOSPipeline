@@ -14,8 +14,14 @@ pipeline {
 					echo 'Hi, Nk. How are you'
 					}	
 				}
+ stage('xcarchive') {
+            			steps {
+xcodebuild build -project iOSPipeline.xcworkspace -scheme TY-Prod | xcpretty
+}
+}
 			 stage('archive') {
             			steps {
+
                				xcodebuild -project iOSPipeline.xcworkspace -scheme iOSPipeline -sdk iphoneos -configuration "debug" archive -archivePath /Users/*/*/workspace/*/iOSPipeline.xcarchive | /usr/local/bin/ocunit2junit					}
 				}
 		}
