@@ -36,7 +36,7 @@ pipeline {
 	stage('Export') {
 			steps {
 				exportIpa appURL: '', 
-				archiveDir: 'Builds', 
+				archiveDir: '', 
 				assetPackManifestURL: '', 
 				compileBitcode: false,
  				developmentTeamID: '', 
@@ -45,7 +45,7 @@ pipeline {
 				fullSizeImageURL: '',
  				ipaExportMethod: 'development', 
 				ipaName: '${VERSION}_${BUILD_DATE}',
- 				ipaOutputDirectory: 'Builds/ipa', 
+ 				ipaOutputDirectory: '', 
 				keychainName: '', 
 				keychainPath:  '${HOME}/Library/Keychains/login.keychain',
  			keychainPwd: hudson.util.Secret.fromString(''),
