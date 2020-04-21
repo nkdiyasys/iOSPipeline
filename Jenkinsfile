@@ -16,7 +16,7 @@ pipeline {
 				}
  stage('xcarchive') {
             			steps {
-xcodebuild build -project iOSPipeline.xcworkspace -scheme iOSPipeline | xcpretty
+xcodebuild build -project iOSPipeline.xcworkspace -scheme iOSPipeline | /usr/local/bin/ocunit2junit
 }
 }
 			 stage('archive') {
