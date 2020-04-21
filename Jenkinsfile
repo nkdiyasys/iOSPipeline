@@ -31,36 +31,42 @@ pipeline {
 					junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
 				}
 			}
-
-		
-	stage('Export') {
-			steps {
-				exportIpa appURL: '', 
-				archiveDir: '', 
-				assetPackManifestURL: '', 
-				compileBitcode: false,
- 				developmentTeamID: '', 
-				developmentTeamName: 'Tregaron India Holdings, LLC', 
-				displayImageURL: '', 
-				fullSizeImageURL: '',
- 				ipaExportMethod: 'development', 
-				ipaName: '${VERSION}_${BUILD_DATE}',
- 				ipaOutputDirectory: '${WORKSPACE}/builds', 
-				keychainName: '', 
-				keychainPath:  '${HOME}/Library/Keychains/login.keychain',
+	stage('Build') {
+				steps {
+			xcodeBuild appURL: '', assetPackManifestURL: '', 
+			buildDir: '',
+			 buildIpa: true,
+			 bundleID: '',
+ 			bundleIDInfoPlistPath: '', 
+			cfBundleShortVersionStringValue: '', 
+			cfBundleVersionValue: '',
+			cleanBeforeBuild: true,
+			cleanResultBundlePath: false, 
+			configuration: 'Debug',
+			 developmentTeamID: '',
+ 			developmentTeamName: 'Tregaron India Holdings, LLC', 
+			displayImageURL: '', 
+			fullSizeImageURL: '',
+		        ipaExportMethod: 'development', 
+			ipaName: '${VERSION}_${BUILD_DATE}', 
+			ipaOutputDirectory: '', 
+			keychainId: '', 
+			keychainPath:  '${HOME}/Library/Keychains/login.keychain',
  			keychainPwd: hudson.util.Secret.fromString(''),
- 				packResourcesAsset: true, 
-				provisioningProfiles: [[provisioningProfileAppId: 'com.lockdown.app', 				provisioningProfileUUID: '4e3f3e97-d9d0-465e-9340-de6a3e0acc30']], 
-				resourcesAssetURL: '', 
-				signingMethod: 'manual', 
-				thinning: '', 
-				unlockKeychain: false, 
-				uploadBitcode: false, 
-				uploadSymbols: false, 
-				xcodeProjectPath: 'iOSPipeline',
- 				xcodeSchema: 'iOSPipeline', 
-				xcodeWorkspaceFile: ''
+ 			logfileOutputDirectory: '', 
+			provisioningProfiles: [[provisioningProfileAppId: 'com.lockdown.app', 				provisioningProfileUUID: '4e3f3e97-d9d0-465e-9340-de6a3e0acc30']],
+ 			resultBundlePath: '', 
+			sdk: '', 
+			signingMethod: 'manual',
+			 symRoot: '',
+ 			target: '', 
+			thinning: '',
+ 			xcodeProjectFile: '', 
+			xcodeProjectPath: 'iOSPipeline', 
+			xcodeSchema: 'iOSPipeline', 
+			xcodeWorkspaceFile: '', 
+			xcodebuildArguments: 'test -destination \'platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max\''
 				}
-			}
+		}
 		}
 	}
