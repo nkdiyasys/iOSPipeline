@@ -27,6 +27,7 @@ xcodeBuild(
   ipaName: "123",
   bundleID: 'com.lockdown.app',
   developmentTeamName: "Tregaron India Holdings, LLC",
+			provisioningProfiles: [[provisioningProfileAppId: 'com.lockdown.app', 				provisioningProfileUUID: '4e3f3e97-d9d0-465e-9340-de6a3e0acc30']],
   cleanBeforeBuild: true,
   configuration: 'Debug',
   cfBundleShortVersionStringValue: '1.0.0',
