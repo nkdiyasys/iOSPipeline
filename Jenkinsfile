@@ -45,7 +45,7 @@ pipeline {
 				fullSizeImageURL: '',
  				ipaExportMethod: 'development', 
 				ipaName: '${VERSION}_${BUILD_DATE}',
- 				ipaOutputDirectory: 'build/', 
+ 				ipaOutputDirectory: '${WORKSPACE}/builds', 
 				keychainName: '', 
 				keychainPath:  '${HOME}/Library/Keychains/login.keychain',
  			keychainPwd: hudson.util.Secret.fromString(''),
