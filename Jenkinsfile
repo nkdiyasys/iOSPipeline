@@ -52,7 +52,7 @@ pipeline {
           always {  
 			//sh 'ln -s test-results-unit.xml $WORKSPACE'
 			//junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
- archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+ 	archiveArtifacts artifacts: 'build/**/*.ipa', fingerprint: true
             junit 'build/reports/**/*.xml'
          }  
          success {  
