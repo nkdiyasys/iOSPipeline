@@ -15,7 +15,7 @@
              echo 'This will run only if successful'  
          }  
          failure {  
-             mail bcc: '', body: "<b>Example</b>, cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ", to: "nkdiyasys@gmail.com";  
+             mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "nkdiyasys@gmail.com";  
          }  
          unstable {  
              echo 'This will run only if the run was marked as unstable'  
