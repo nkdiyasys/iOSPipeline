@@ -16,10 +16,8 @@
          }  
          failure {  
 
-  emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+emailext attachLog: true,body: 'noting', recipientProviders: [developers()], subject: 'sub', to: 'nkdiyasys@gmail.com'
 
-
-           
          }  
          unstable {  
              echo 'This will run only if the run was marked as unstable'  
