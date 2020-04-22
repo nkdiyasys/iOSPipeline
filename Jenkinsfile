@@ -46,36 +46,11 @@ pipeline {
 			xcodebuildArguments: 'test -destination \'platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max\''
 				}
 		}
-	stage('Export') {
-				steps {
-exportIpa appURL: '', 
-archiveDir: '${WORKSPACE}/build', 
-assetPackManifestURL: '', 
-compileBitcode: true, developmentTeamID: '', 
-developmentTeamName: 'Tregaron India Holdings, LLC', 
-displayImageURL: '',
- fullSizeImageURL: '',
- ipaExportMethod: 'development',
- ipaName: '${VERSION}_${BUILD_DATE}',
- ipaOutputDirectory: '${WORKSPACE}/build', 
-keychainName: '', 
-keychainPath:  '${HOME}/Library/Keychains/login.keychain',
-keychainPwd: hudson.util.Secret.fromString(''),
-packResourcesAsset: true,
- provisioningProfiles: [[provisioningProfileAppId: 'com.lockdown.app', 
-provisioningProfileUUID: '4e3f3e97-d9d0-465e-9340-de6a3e0acc30']],
- resourcesAssetURL: '', 
-signingMethod: 'manual', thinning: '', 
-unlockKeychain: false, 
-uploadBitcode: true,
- uploadSymbols: true,
- xcodeProjectPath: 'iOSPipeline', 
-xcodeSchema: 'iOSPipeline', 
-xcodeWorkspaceFile: ''
-	}
-	}
 		}
   post {
+	always {  
+             echo 'junit test'  
+         } 
           always {  
              echo 'This will always run'  
          }  
