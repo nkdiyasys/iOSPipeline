@@ -15,7 +15,11 @@
              echo 'This will run only if successful'  
          }  
          failure {  
-                emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+
+  emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+
+
+           
          }  
          unstable {  
              echo 'This will run only if the run was marked as unstable'  
