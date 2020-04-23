@@ -49,7 +49,7 @@ echo 'Hi'
 			//junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
  	//archiveArtifacts artifacts: '**/*.ipa', fingerprint: true
           //  junit 'build/reports/**/*.xml'
-junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
+junit allowEmptyResults: true, testResults: 'test-reports/*.xml'
 
          }  
          success {  
