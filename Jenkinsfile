@@ -21,7 +21,7 @@ steps {
                     ipaOutputDirectory: '',
                     keychainName: '',
                     keychainPath: '',
-                    keychainPwd: keychainPwd: hudson.util.Secret.fromString(''),
+                    keychainPwd: hudson.util.Secret.fromString(''),
                     logfileOutputDirectory: '',
                     provisioningProfiles: [[provisioningProfileAppId: '', provisioningProfileUUID: '']],
                     sdk: '',
