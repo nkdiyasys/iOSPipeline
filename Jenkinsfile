@@ -50,7 +50,7 @@ pipeline {
   post {
 
           always {  
-Echo "Hi"
+echo 'Hi'
 			//sh 'ln -s test-results-unit.xml $WORKSPACE'
 			//junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
  	//archiveArtifacts artifacts: '**/*.ipa', fingerprint: true
