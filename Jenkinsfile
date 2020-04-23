@@ -31,7 +31,7 @@ steps {
                     xcodeProjectFile: '',
                     xcodeProjectPath: 'iOSPipeline',
                     xcodeSchema: 'iOSPipeline',
-                    xcodeWorkspaceFile: 'iOSPipeline',
+                    xcodeWorkspaceFile: '',
                     xcodebuildArguments: ''
 
 
