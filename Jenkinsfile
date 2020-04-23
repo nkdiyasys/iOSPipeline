@@ -32,7 +32,7 @@ steps {
                     xcodeProjectPath: 'iOSPipeline',
                     xcodeSchema: 'iOSPipeline',
                     xcodeWorkspaceFile: '',
-                    xcodebuildArguments: ''
+                    xcodebuildArguments: 'test -destination \'platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max\''
 
 
 }
