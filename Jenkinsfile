@@ -51,8 +51,7 @@ echo 'Hi'
           //  junit 'build/reports/**/*.xml'
   //sh 'ln -s tests/test-results-unit.xml $WORKSPACE'
 //junit allowEmptyResults: true, testResults: 'test-reports/*.xml'
-        sh 'xcodebuild -scheme "iOSPipeline" -configuration "Debug" build test -destination "platform=iOS Simulator,name=iPhone 6,OS=9.3" -enableCodeCoverage YES | /usr/local/bin/xcpretty -r junit'
-        step([$class: 'JUnitResultArchiver', allowEmptyResults: true, testResults: 'build/reports/junit.xml'])
+publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'html', reportFiles: 'index.html', reportName: 'Coverage Report'])
 
          }  
          success {  
