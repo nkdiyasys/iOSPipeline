@@ -27,8 +27,9 @@ pipeline {
 			}
 			stage('Junit') {
 				steps {
-  					sh 'ln -s tests/test-results-unit.xml $WORKSPACE'
-					junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
+echo 'jjj'
+  					//sh 'ln -s tests/test-results-unit.xml $WORKSPACE'
+					//junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
 				}
 			}
 	stage('Build') {
@@ -76,7 +77,5 @@ echo 'Pending'
 		}
 		}
 	}
-
-
 
 
