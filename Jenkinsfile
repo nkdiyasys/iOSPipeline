@@ -40,9 +40,9 @@ pipeline {
 
 			}
                    }  
-stage('Archive') {
+stage('Export') {
             steps {
-                archiveArtifacts 'Career Coach/build/Release-iphoneos/career-coach.ipa'
+echo 'export'
             }
         }
 
