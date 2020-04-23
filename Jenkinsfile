@@ -44,13 +44,15 @@ pipeline {
 post {
 
           always {  
-echo 'Hi'
+//echo 'Hi'
 			//sh 'ln -s test-results-unit.xml $WORKSPACE'
 			//junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
  	//archiveArtifacts artifacts: '**/*.ipa', fingerprint: true
           //  junit 'build/reports/**/*.xml'
   //sh 'ln -s tests/test-results-unit.xml $WORKSPACE'
 //junit allowEmptyResults: true, testResults: 'test-reports/*.xml'
+
+sh 'xcodebuild -scheme "iOSPipeline" -configuration "Debug" build test -destination "platform=iOS Simulator,name=iPhone 6,OS=10.1" -enableCodeCoverage YES | /usr/local/bin/ocunit2junit
 
          }  
          success {  
