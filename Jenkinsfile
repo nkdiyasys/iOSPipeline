@@ -36,7 +36,7 @@ xcodeProjectFile: '',
 xcodeProjectPath: 'iOSPipeline',
 xcodeSchema: 'iOSPipeline',
 xcodeWorkspaceFile: '',
-xcodebuildArguments: 'test -destination 'platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max' -enableCodeCoverage YES  | /usr/local/bin/ocunit2junit''
+xcodebuildArguments: 'test -destination \'platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max\' -enableCodeCoverage YES  | /usr/local/bin/ocunit2junit'
 
 }
                    } 
