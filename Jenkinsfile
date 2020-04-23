@@ -40,6 +40,12 @@ pipeline {
 
 			}
                    }  
+stage('Archive') {
+            steps {
+                archiveArtifacts 'Career Coach/build/Release-iphoneos/career-coach.ipa'
+            }
+        }
+
      		}  
 post {
 
@@ -51,7 +57,7 @@ echo 'Hi'
           //  junit 'build/reports/**/*.xml'
   //sh 'ln -s tests/test-results-unit.xml $WORKSPACE'
 //junit allowEmptyResults: true, testResults: 'test-reports/*.xml'
-publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'html', reportFiles: 'index.html', reportName: 'Coverage Report'])
+//publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'html', reportFiles: 'index.html', reportName: 'Coverage Report'])
 
          }  
          success {  
