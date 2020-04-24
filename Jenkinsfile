@@ -4,7 +4,7 @@ stages {
 stage('Build') {
 steps {
 xcodeBuild appURL: '', assetPackManifestURL: '', buildDir: '${WORKSPACE}/build', bundleID: '', bundleIDInfoPlistPath: '', cfBundleShortVersionStringValue: '', cfBundleVersionValue: '', cleanBeforeBuild: false, cleanResultBundlePath: false, configuration: 'Release', developmentTeamID: '', developmentTeamName: 'Tregaron India Holdings, LLC', displayImageURL: '', fullSizeImageURL: '', ipaExportMethod: 'ad-hoc', ipaName: '', ipaOutputDirectory: '', keychainId: '', keychainPath:  '${HOME}/Library/Keychains/login.keychain',
-keychainPwd: hudson.util.Secret.fromString(''), logfileOutputDirectory: '', manualSigning: false, provisioningProfiles: [[provisioningProfileAppId: '', provisioningProfileUUID: '']], resultBundlePath: '', sdk: '', symRoot: '', target: '', thinning: '', xcodeProjectFile: 'iOSPipeline', xcodeProjectPath: 'iOSPipeline', xcodeSchema: '', xcodeWorkspaceFile: '', xcodebuildArguments: 'test -destination \'platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max\''
+keychainPwd: hudson.util.Secret.fromString(''), logfileOutputDirectory: '', manualSigning: false, provisioningProfiles: [[provisioningProfileAppId: '', provisioningProfileUUID: '']], resultBundlePath: '', sdk: '', symRoot: '', target: '', thinning: '', xcodeProjectFile: '', xcodeProjectPath: 'iOSPipeline', xcodeSchema: '', xcodeWorkspaceFile: '', xcodebuildArguments: 'test -destination \'platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max\''
 }
                    } 
      } 
