@@ -1,11 +1,41 @@
 pipeline {
-agent any
-stages {
-stage('Build') {
-steps {
-xcodeBuild appURL: '', assetPackManifestURL: '', buildDir: '', bundleID: '', bundleIDInfoPlistPath: '', cfBundleShortVersionStringValue: '', cfBundleVersionValue: '', cleanBeforeBuild: false, cleanResultBundlePath: false, configuration: 'Debug', developmentTeamID: '', developmentTeamName: 'Tregaron India Holdings, LLC', displayImageURL: '', fullSizeImageURL: '', ipaExportMethod: 'ad-hoc', ipaName: '', ipaOutputDirectory: '', keychainId: '', keychainPath:  '${HOME}/Library/Keychains/login.keychain',
-keychainPwd: hudson.util.Secret.fromString(''), logfileOutputDirectory: '', manualSigning: false, provisioningProfiles: [[provisioningProfileAppId: '', provisioningProfileUUID: '']], resultBundlePath: '', sdk: '', symRoot: '', target: '', thinning: '', xcodeProjectFile: '', xcodeProjectPath: 'iOSPipeline', xcodeSchema: 'iOSPipeline', xcodeWorkspaceFile: '', xcodebuildArguments: 'test -destination \'platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max\''
-}
+	agent any
+		stages {
+			stage('Build') {
+				steps {
+					xcodeBuild appURL: '', 
+					assetPackManifestURL: '',
+					 buildDir: '', 
+					bundleID: '',
+					 bundleIDInfoPlistPath: '', 
+					cfBundleShortVersionStringValue: '', 
+					cfBundleVersionValue: '',
+ 					cleanBeforeBuild: false, 
+					cleanResultBundlePath: false, 
+					configuration: 'Debug', 
+					developmentTeamID: '', 
+					developmentTeamName: 'Tregaron India Holdings, LLC', 
+					displayImageURL: '', 
+					fullSizeImageURL: '', 
+					ipaExportMethod: 'development',
+					 ipaName: '123',
+					 ipaOutputDirectory: '',
+					 keychainId: '',
+					 keychainPath:  '${HOME}/Library/Keychains/login.keychain',
+					keychainPwd: hudson.util.Secret.fromString(''),
+					 logfileOutputDirectory: '', 
+					manualSigning: false, 
+					provisioningProfiles: [[provisioningProfileAppId: '', provisioningProfileUUID: '']], resultBundlePath: '', 
+					sdk: '', 
+					symRoot: '', 
+					target: '', 
+					thinning: '',
+					 xcodeProjectFile: '', 
+					xcodeProjectPath: 'iOSPipeline', 
+					xcodeSchema: 'iOSPipeline', 
+					xcodeWorkspaceFile: '',
+ 					xcodebuildArguments: 'test -destination \'platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max\''
+					}
                    } 
      } 
 post {
